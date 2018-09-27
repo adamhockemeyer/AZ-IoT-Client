@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AZIoTClient.Views.GeolocationPage" Title="Geolocation">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand">
+            <Grid Padding="10,40,10,40">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Column="0" HorizontalOptions="CenterAndExpand">
+                    <Label Text="{Binding Latitude}" HorizontalTextAlignment="Center" TextColor="{StaticResource NavigationPrimary}" FontAttributes="Italic" />
+                    <Label Text="Latitude" FontSize="12" HorizontalTextAlignment="Center"/>
+                </StackLayout>
+                
+                 <StackLayout Grid.Column="1" HorizontalOptions="CenterAndExpand">
+                    <Label Text="{Binding Longitude}" HorizontalTextAlignment="Center" TextColor="{StaticResource NavigationPrimary}" FontAttributes="Italic"/>
+                    <Label Text="Longitude" FontSize="12" HorizontalTextAlignment="Center"/>
+                </StackLayout> 
+                 <StackLayout Grid.Row="1" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand">
+                    <Label Text="{Binding Altitude}" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" TextColor="{StaticResource NavigationPrimary}" FontAttributes="Italic"/>
+                    <Label Text="Altitude" FontSize="12" HorizontalTextAlignment="Center"/>
+                </StackLayout>
+            </Grid>
+            <TableView Intent="Settings">
+                <TableRoot>
+                    <TableSection Title="Settings">
+                        <SwitchCell Text="Enable Location Tracking" On="{Binding IsEnableLocationTracking}" />
+                        <SwitchCell Text="Send to IoT Hub" On="{Binding IsSendingToIoTHub}" />
+                        <ViewCell >
+                            <Button IsVisible="{Binding IsSendingToIoTHub}" Text="Force Send Location" Command="{Binding ForceSendCommand}" />
+                       </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

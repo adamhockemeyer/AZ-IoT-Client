@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AZIoTClient.Views.GyroscopePage" Title="Gyroscope">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand">
+            <Grid Padding="10,40,10,40">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Column="0" HorizontalOptions="CenterAndExpand">
+                    <Label Text="{Binding X}" HorizontalTextAlignment="Center" TextColor="{StaticResource NavigationPrimary}" FontAttributes="Italic" />
+                    <Label Text="X" FontSize="12" HorizontalTextAlignment="Center" />
+                </StackLayout>
+                <StackLayout Grid.Column="1" HorizontalOptions="CenterAndExpand">
+                    <Label Text="{Binding Y}" HorizontalTextAlignment="Center" TextColor="{StaticResource NavigationPrimary}" FontAttributes="Italic" />
+                    <Label Text="Y" FontSize="12" HorizontalTextAlignment="Center" />
+                </StackLayout>
+                <StackLayout Grid.Row="1" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand">
+                    <Label Text="{Binding Z}" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" TextColor="{StaticResource NavigationPrimary}" FontAttributes="Italic" />
+                    <Label Text="Z" FontSize="12" HorizontalTextAlignment="Center" />
+                </StackLayout>
+            </Grid>
+            <TableView Intent="Settings">
+                <TableRoot>
+                    <TableSection Title="Settings">
+                        <SwitchCell Text="Enable Gyroscope" On="{Binding IsEnableGyroscope}" />
+                        <SwitchCell Text="Send to IoT Hub" On="{Binding IsSendingToIoTHub}" />
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

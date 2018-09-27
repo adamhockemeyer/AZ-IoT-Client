@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AZIoTClient.Views.BatteryPage" Title="Battery">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand">
+            <Grid Padding="10,40,10,40">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Column="0" HorizontalOptions="CenterAndExpand">
+                    <Label Text="{Binding PowerSource}" HorizontalTextAlignment="Center" TextColor="{StaticResource NavigationPrimary}" FontAttributes="Italic" />
+                    <Label Text="Power Source" FontSize="12" HorizontalTextAlignment="Center"/>
+                </StackLayout>
+                 <StackLayout Grid.Column="1" HorizontalOptions="CenterAndExpand">
+                    <Label Text="{Binding ChargeLevel, StringFormat={StaticResource formatpercent}}" FontSize="34" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" TextColor="{StaticResource NavigationPrimary}" FontAttributes="Italic"/>
+                    <Label Text="Charge Level" FontSize="12" HorizontalTextAlignment="Center"/>
+                </StackLayout>
+                 <StackLayout Grid.Column="2" HorizontalOptions="CenterAndExpand">
+                    <Label Text="{Binding ChargeState}" HorizontalTextAlignment="Center" TextColor="{StaticResource NavigationPrimary}" FontAttributes="Italic"/>
+                    <Label Text="Charge State" FontSize="12" HorizontalTextAlignment="Center"/>
+                </StackLayout> 
+            </Grid>
+            <TableView Intent="Settings">
+                <TableRoot>
+                    <TableSection Title="Settings">
+                        <SwitchCell Text="Send to IoT Hub" On="{Binding IsSendingToIoTHub}" />
+                        <ViewCell >
+                            <Button IsVisible="{Binding IsSendingToIoTHub}" Text="Force Send Status" Command="{Binding ForceSendCommand}" />
+                       </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

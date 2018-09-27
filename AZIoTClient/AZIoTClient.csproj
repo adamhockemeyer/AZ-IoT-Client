@@ -1,0 +1,61 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="3.2.0.839982" />  
+    <PackageReference Include="Xamarin.Essentials" Version="0.10.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Devices.Client" Version="1.18.0" />
+    <PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="1.60.3" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.3.840" />
+    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.3.840" />
+    <PackageReference Include="Acr.UserDialogs" Version="7.0.1" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="1.9.0" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="1.9.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SharedViews\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\Images\" />
+    <Folder Include="Helpers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\Images\battery.svg" />
+    <None Remove="Resources\Images\barometer.svg" />
+    <None Remove="Resources\Images\compass.svg" />
+    <None Remove="Resources\Images\axis-arrows.svg" />
+    <None Remove="Resources\Images\settings.svg" />
+    <None Remove="Resources\Images\info.svg" />
+    <None Remove="Resources\Images\geolocation.svg" />
+    <None Remove="Resources\Images\magnet.svg" />
+    <None Remove="Resources\Images\home.svg" />
+    <None Remove="Resources\Images\home.svg" />
+    <None Remove="Resources\Images\magnet1.svg" />
+    <None Remove="Resources\Images\hand-phone.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Images\battery.svg" />
+    <EmbeddedResource Include="Resources\Images\barometer.svg" />
+    <EmbeddedResource Include="Resources\Images\compass.svg" />
+    <EmbeddedResource Include="Resources\Images\axis-arrows.svg" />
+    <EmbeddedResource Include="Resources\Images\settings.svg" />
+    <EmbeddedResource Include="Resources\Images\info.svg" />
+    <EmbeddedResource Include="Resources\Images\geolocation.svg" />
+    <EmbeddedResource Include="Resources\Images\magnet.svg" />
+    <EmbeddedResource Include="Resources\Images\home2.svg" />
+    <EmbeddedResource Include="Resources\Images\magnet1.svg" />
+    <EmbeddedResource Include="Resources\Images\hand-phone.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Services\IDataStore.cs" />
+    <Compile Remove="ViewModels\ItemsViewModel.cs" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AZIoTClient.Views.SettingsPage" Title="Settings">
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <ContentView BackgroundColor="{StaticResource NavigationPrimary}" Padding="0,20,0,20">
+                <Label Text="Azure IoT Hub Configuration" HorizontalTextAlignment="Center" TextColor="White" FontAttributes="Bold" />
+            </ContentView>
+            <Label Margin="20" FontSize="12" Text="In your Azure portal, create an 'IoT Hub'.  Under 'Settings' select 'Shared access policies', and select the 'device' policy and enter the details below."/>
+             <Label Margin="20" FontSize="12" Text="Then in the Azure portal under 'Explorers', select 'IoT devices'.  Click the 'Add' button and add the device id below."/>
+            <TableView Intent="Settings" HasUnevenRows="true" HeightRequest="200">
+                <TableRoot>            
+                    <TableSection Title="Host Name">
+                        <ViewCell>
+                            <Entry Text="{Binding Hostname}" Placeholder="(i.e. myname.azure-devices.net)" IsSpellCheckEnabled="false" IsTextPredictionEnabled="false" />
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection Title="Shared Access Key">
+                        <ViewCell>
+                            <Entry Text="{Binding SharedAccessKey}" Placeholder="(i.e. pDIieWvMZDuWpfwVJdamtN+n0Zmrvzi1COCP/nkskpM)" IsSpellCheckEnabled="false" IsTextPredictionEnabled="false"/>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection Title="Device Id">
+                        <ViewCell>
+                            <Entry Text="{Binding DeviceId}" Placeholder="(Enter your Device Id)" IsSpellCheckEnabled="false" IsTextPredictionEnabled="false" />
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+            <Button Text="Test Connection" Command="{Binding TestConnectionCommand}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

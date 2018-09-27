@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AZIoTClient.Views.HomePage" xmlns:views="clr-namespace:AZIoTClient.SharedViews;assembly=AZIoTClient" Title="AZ IoT Client">
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <StackLayout BackgroundColor="White" Padding="10,20,10,20">
+                <Label Text="Azure IoT Hub Connection Status:" FontSize="12" HorizontalTextAlignment="Center" />
+                <Label Text="{Binding IoTStatusMessage}" FontSize="14" FontAttributes="Bold,Italic" TextColor="{Binding IoTStatusColor}" HorizontalTextAlignment="Center" />
+            </StackLayout>
+            <ContentView HeightRequest=".5" BackgroundColor="#A9A9A9" />
+            <StackLayout BackgroundColor="White" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Padding="10,10,10,10">
+                <views:SVGImage Grid.Column="0" Margin="0,0,10,0" Source="resource://AZIoTClient.Resources.Images.hand-phone.svg" WidthRequest="25" HeightRequest="25" Color="#A9A9A9" />
+                <Label Text="Send data to your IoT Hub" FontSize="20" FontAttributes="Bold,Italic" TextColor="{StaticResource NavigationPrimary}" HorizontalTextAlignment="Center" />
+            </StackLayout>
+            <ScrollView>
+                <StackLayout Spacing="0">
+                    <Grid ColumnSpacing="0" RowSpacing="0" BackgroundColor="{StaticResource NavigationPrimary}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="1" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="1" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand" Padding="20">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToPageCommand}" CommandParameter="Barometer" />
+                            </StackLayout.GestureRecognizers>     
+                            <views:SVGImage Grid.Column="0" Margin="0,0,10,0" Source="resource://AZIoTClient.Resources.Images.barometer.svg" WidthRequest="50" HeightRequest="50" Color="White" />
+                            <Label Text="Barometer" TextColor="White" FontAttributes="Bold" />
+                        </StackLayout>
+                        <ContentView Grid.Row="0" Grid.Column="1" BackgroundColor="White" Padding="20">
+                        </ContentView>
+                        <StackLayout Grid.Row="0" Grid.Column="2" HorizontalOptions="CenterAndExpand" Padding="20">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToPageCommand}" CommandParameter="Battery" />
+                            </StackLayout.GestureRecognizers>
+                            <views:SVGImage Grid.Column="0" Margin="0,0,10,0" Source="resource://AZIoTClient.Resources.Images.battery.svg" WidthRequest="50" HeightRequest="50" Color="White" />
+                            <Label Text="Battery" TextColor="White" FontAttributes="Bold" />
+                        </StackLayout>
+                        <ContentView Grid.Row="1" Grid.ColumnSpan="3" BackgroundColor="White" Padding="20">
+                        </ContentView>
+                    </Grid>
+                    <Grid ColumnSpacing="0" RowSpacing="0" BackgroundColor="{StaticResource NavigationPrimary}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="1" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="1" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand" Padding="20">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToPageCommand}" CommandParameter="Compass" />
+                            </StackLayout.GestureRecognizers>
+                            <views:SVGImage Grid.Column="0" Margin="0,0,10,0" Source="resource://AZIoTClient.Resources.Images.compass.svg" WidthRequest="50" HeightRequest="50" Color="White" />
+                            <Label Text="Compass" TextColor="White" FontAttributes="Bold" />
+                        </StackLayout>
+                        <ContentView Grid.Row="0" Grid.Column="1" BackgroundColor="White" Padding="20">
+                        </ContentView>
+                        <StackLayout Grid.Row="0" Grid.Column="2" HorizontalOptions="CenterAndExpand" Padding="20">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToPageCommand}" CommandParameter="Geolocation" />
+                            </StackLayout.GestureRecognizers>
+                            <views:SVGImage Grid.Column="0" Margin="0,0,10,0" Source="resource://AZIoTClient.Resources.Images.geolocation.svg" WidthRequest="50" HeightRequest="50" Color="White" />
+                            <Label Text="Geolocation" TextColor="White" FontAttributes="Bold" />
+                        </StackLayout>
+                        <ContentView Grid.Row="1" Grid.ColumnSpan="3" BackgroundColor="White" Padding="20">
+                        </ContentView>
+                    </Grid>
+                    <Grid ColumnSpacing="0" RowSpacing="0" BackgroundColor="{StaticResource NavigationPrimary}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="1" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="1" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand" Padding="20">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToPageCommand}" CommandParameter="Gyroscope" />
+                            </StackLayout.GestureRecognizers>
+                            <views:SVGImage Grid.Column="0" Margin="0,0,10,0" Source="resource://AZIoTClient.Resources.Images.axis-arrows.svg" WidthRequest="50" HeightRequest="50" Color="White" />
+                            <Label Text="Gyroscope" TextColor="White" FontAttributes="Bold" />
+                        </StackLayout>
+                        <ContentView Grid.Row="0" Grid.Column="1" BackgroundColor="White" Padding="20">
+                        </ContentView>
+                        <StackLayout Grid.Row="0" Grid.Column="2" HorizontalOptions="CenterAndExpand" Padding="20">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToPageCommand}" CommandParameter="Magnetometer" />
+                            </StackLayout.GestureRecognizers>
+                            <views:SVGImage Grid.Column="0" Margin="0,0,10,0" Source="resource://AZIoTClient.Resources.Images.magnet1.svg" WidthRequest="50" HeightRequest="50" Color="White" />
+                            <Label Text="Magnetometer" TextColor="White" FontAttributes="Bold" />
+                        </StackLayout>
+                        <ContentView Grid.Row="1" Grid.ColumnSpan="3" BackgroundColor="White" Padding="20">
+                        </ContentView>
+                    </Grid>
+                    <Grid ColumnSpacing="0" RowSpacing="0" BackgroundColor="#F65314">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Padding="20">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToPageCommand}" CommandParameter="Settings" />
+                            </StackLayout.GestureRecognizers>
+                            <views:SVGImage Grid.Column="0" Margin="0,0,10,0" Source="resource://AZIoTClient.Resources.Images.settings.svg" WidthRequest="25" HeightRequest="25" Color="White" />
+                            <Label Text="Settings" TextColor="White" FontAttributes="Bold" />
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AZIoTClient.Views.MenuPage" xmlns:views="clr-namespace:AZIoTClient.SharedViews;assembly=AZIoTClient" Title="Menu">
+    <StackLayout VerticalOptions="FillAndExpand" Spacing="0">
+        <StackLayout BackgroundColor="{StaticResource NavigationPrimary}">
+            <Label Text="AZ IoT Client" HorizontalTextAlignment="Center" TextColor="White" FontSize="28" FontAttributes="Bold" FontFamily="" Margin="50,50,50,10" />
+            <Label Text="Send data to your Azure IoT Hub."  HorizontalTextAlignment="Center" FontSize="12" FontAttributes="Italic" TextColor="White" Margin="0,0,0,50" />
+        </StackLayout>   
+        <ListView x:Name="ListViewMenu" HasUnevenRows="True" SeparatorVisibility="None" Margin="10" CachingStrategy="RecycleElement">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <views:SVGImage Grid.Column="0" Margin="0,0,10,0" Source="{Binding IconSource}"  WidthRequest="20" HeightRequest="20" Color="{StaticResource NavigationPrimary}" />
+                            <Label Grid.Column="1" Text="{Binding Title}" FontSize="20" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
