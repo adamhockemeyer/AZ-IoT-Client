@@ -31,7 +31,6 @@ namespace AZIoTClient.Services
 
         public async Task Start(bool isConnectionTest = false)
         {
-            //HostName=saas-iothub-0273380b-e8a4-43a4-91fc-17f3c88e5ad6.azure-devices.net;DeviceId=0f8ec6e3-e23a-4f88-ae6f-370a2423c6ff;SharedAccessKey=icjS1lVFWJWXKJwNo5sNyU8Zxmv72aZ7s4ty+x/TKzc=
             try
             {
                 string hostname = await SecureStorage.GetAsync("_hostname");
@@ -46,8 +45,6 @@ namespace AZIoTClient.Services
                 }
 
                 // Connection string found in Azure on the IoT Hub --> Settings --> Shared Access policies, Select device, then Copy the connection string.
-                //this.deviceClient = DeviceClient.CreateFromConnectionString($"HostName={hostname};SharedAccessKeyName=device;SharedAccessKey={sharedAccessKey}", deviceId, this.Protocol);
-
                 this.deviceClient = DeviceClient.CreateFromConnectionString($"HostName={hostname};DeviceId={deviceId};SharedAccessKey={sharedAccessKey}",this.Protocol);
 
                 await this.deviceClient.OpenAsync();
