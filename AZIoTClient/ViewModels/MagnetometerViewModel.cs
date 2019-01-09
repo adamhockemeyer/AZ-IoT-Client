@@ -86,6 +86,8 @@ namespace AZIoTClient.ViewModels
             Y = e.Reading.MagneticField.Y;
             Z = e.Reading.MagneticField.Z;
 
+            var magnet = new { MagnetometerX = X, MagnetometerY = Y, MagnetometerZ = Z };
+
             if (IsSendingToIoTHub)
             {
                 string payload = Newtonsoft.Json.JsonConvert.SerializeObject(e);

@@ -48,7 +48,7 @@ namespace AZIoTClient.ViewModels
 
             if (IsSendingToIoTHub)
             {
-                string payload = Newtonsoft.Json.JsonConvert.SerializeObject(e);
+                string payload = Newtonsoft.Json.JsonConvert.SerializeObject(e.Reading.HeadingMagneticNorth);
                 Acr.UserDialogs.UserDialogs.Instance.Toast(payload, TimeSpan.FromSeconds(.5));
                 Task.Run(async () => await Services.IoTClient.Instance.SendEvent(payload));
             }

@@ -90,9 +90,11 @@ namespace AZIoTClient.ViewModels
             Y = e.Reading.AngularVelocity.Y;
             Z = e.Reading.AngularVelocity.Z;
 
+            var gyro = new { GyroscopeX = X, GyroscopeY = Y, GyroscopeZ = Z };
+
             if (IsSendingToIoTHub)
             {
-                string payload = Newtonsoft.Json.JsonConvert.SerializeObject(e);
+                string payload = Newtonsoft.Json.JsonConvert.SerializeObject(gyro);
                 Acr.UserDialogs.UserDialogs.Instance.Toast(payload, TimeSpan.FromSeconds(.5));
                 Task.Run(async () => await Services.IoTClient.Instance.SendEvent(payload));
             }
