@@ -5,6 +5,9 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 
 using System.Timers;
+using AZIoTClient.Models;
+using System.Linq;
+using AZIoTClient.Helpers;
 
 namespace AZIoTClient.ViewModels
 {
@@ -21,7 +24,7 @@ namespace AZIoTClient.ViewModels
         public bool IsEnableLocationTracking
         {
             get => _isEnableLocationTracking;
-            set  { SetProperty(ref _isEnableLocationTracking, value); _timer.Enabled = value; }
+            set { SetProperty(ref _isEnableLocationTracking, value); _timer.Enabled = value; }
         }
 
         double _latitude;
@@ -43,6 +46,13 @@ namespace AZIoTClient.ViewModels
         {
             get => _altitude;
             set => SetProperty(ref _altitude, value);
+        }
+
+        string _address;
+        public string Address
+        {
+            get => _address;
+            set => SetProperty(ref _address, value);
         }
 
         public Command GetLocationCommand { get; set; }
@@ -72,24 +82,38 @@ namespace AZIoTClient.ViewModels
 
             _location = await Geolocation.GetLocationAsync(req);
 
-            if(_location != null)
+
+            if (_location != null)
             {
                 Latitude = _location.Latitude;
                 Longitude = _location.Longitude;
                 Altitude = _location.Altitude;
 
+                var placemarks = await Geocoding.GetPlacemarksAsync(_location);
+                var placemark = placemarks?.FirstOrDefault();
+
+                if (placemark != null)
+                {
+
+                    Address = $"{placemark.FeatureName}, {placemark.Locality}, {placemark.AdminArea} {placemark.PostalCode}";
+                }
+
                 if (IsSendingToIoTHub)
                 {
                     await ForceSend();
                 }
-            }  
+            }
         }
 
         async Task ForceSend()
         {
-            string payload = Newtonsoft.Json.JsonConvert.SerializeObject(_location);
+            var payloadData = new { _location.Latitude, _location.Longitude, _location.Altitude, _location.Speed, _location.Course, Address, Coordinates = $"{_location.Latitude},{_location.Longitude}" };
+            string payload = Newtonsoft.Json.JsonConvert.SerializeObject(payloadData);
             Acr.UserDialogs.UserDialogs.Instance.Toast(payload, TimeSpan.FromSeconds(0.5));
             await Services.IoTClient.Instance.SendEvent(payload);
+
+            //await Services.IoTClient.Instance.UpdateProperties(new DeviceProperties() { Address = Address, Coordinates = $"{GeoAngle.FromDouble(Latitude).ToString("NS")}, {GeoAngle.FromDouble(Longitude).ToString("WE")}" });
+            await Services.IoTClient.Instance.UpdateProperties(new DeviceProperties() { Address = Address, Coordinates = new IoTCentralLocation { lat = Latitude, lon = Longitude } });
         }
 
         void _timer_Elapsed(object sender, ElapsedEventArgs e)

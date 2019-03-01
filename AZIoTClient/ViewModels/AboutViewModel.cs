@@ -11,7 +11,7 @@ namespace AZIoTClient.ViewModels
         {
             Title = "About";
 
-            OpenWebCommand = new Command(() => Device.OpenUri(new Uri("https://xamarin.com/platform")));
+            OpenWebCommand = new Command<string>((url) => Device.OpenUri(new Uri(url)));
         }
 
         public ICommand OpenWebCommand { get; }

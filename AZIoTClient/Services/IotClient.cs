@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Devices.Client;
 using Xamarin.Essentials;
+using Newtonsoft.Json;
 
 namespace AZIoTClient.Services
 {
@@ -39,8 +40,8 @@ namespace AZIoTClient.Services
 
                 if(string.IsNullOrEmpty(hostname) || string.IsNullOrEmpty(sharedAccessKey) || string.IsNullOrEmpty(deviceId))
                 {
-                    await Acr.UserDialogs.UserDialogs.Instance.AlertAsync("IoT Hub connection details missing.  Please update your settings.", "Missing Settings");
-                    Debug.WriteLine("IoT Hub connection details missing");
+                    await Acr.UserDialogs.UserDialogs.Instance.AlertAsync("IoT Central/Hub connection details missing.  Please update your settings.", "Missing Settings");
+                    Debug.WriteLine("IoT Central/Hub connection details missing");
                     return;
                 }
 
@@ -59,7 +60,7 @@ namespace AZIoTClient.Services
             }
             catch (Exception ex)
             {
-                string msg = $"Error opening IoT Hub Connection: {ex.Message} {ex.GetType().ToString()}";
+                string msg = $"Error opening IoT Central/Hub Connection: {ex.Message} {ex.GetType().ToString()}";
                 Debug.WriteLine(msg);
                 await Acr.UserDialogs.UserDialogs.Instance.AlertAsync(msg,"Connection Error");
                 IsConnectionOpen = false;
@@ -82,6 +83,16 @@ namespace AZIoTClient.Services
                 Message eventMessage = new Message(Encoding.UTF8.GetBytes(message));
                 Debug.WriteLine(string.Format("Sending message: '{0}'", message));
                 await deviceClient.SendEventAsync(eventMessage);
+            }
+        }
+
+        public async Task UpdateProperties(object properties)
+        {
+            if(IsConnectionOpen && properties != null)
+            {
+                var twinCollection = new Microsoft.Azure.Devices.Shared.TwinCollection(JsonConvert.SerializeObject(properties));
+               
+                await deviceClient.UpdateReportedPropertiesAsync(twinCollection);
             }
         }
     }

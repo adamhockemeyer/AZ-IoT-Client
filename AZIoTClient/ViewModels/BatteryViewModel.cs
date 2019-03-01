@@ -55,7 +55,7 @@ namespace AZIoTClient.ViewModels
             await Services.IoTClient.Instance.SendEvent(payload);
         }
 
-        void Battery_BatteryChanged(object sender, BatteryChangedEventArgs e)
+        void Battery_BatteryChanged(object sender, BatteryInfoChangedEventArgs e)
         {
             ChargeLevel = Battery.ChargeLevel;
             PowerSource = Battery.PowerSource.ToString();
@@ -70,12 +70,13 @@ namespace AZIoTClient.ViewModels
 
         internal override void Appearing()
         {
-            Battery.BatteryChanged += Battery_BatteryChanged;
+            Battery.BatteryInfoChanged += Battery_BatteryChanged;
+            
         }
 
         internal override void Disappearing()
         {
-            Battery.BatteryChanged -= Battery_BatteryChanged;
+            Battery.BatteryInfoChanged -= Battery_BatteryChanged;
         }
     }
 }

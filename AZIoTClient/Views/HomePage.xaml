@@ -3,13 +3,13 @@
     <ContentPage.Content>
         <StackLayout Spacing="0">
             <StackLayout BackgroundColor="White" Padding="10,20,10,20">
-                <Label Text="Azure IoT Hub Connection Status:" FontSize="12" HorizontalTextAlignment="Center" />
+                <Label Text="Azure IoT Central Connection Status:" FontSize="12" HorizontalTextAlignment="Center" />
                 <Label Text="{Binding IoTStatusMessage}" FontSize="14" FontAttributes="Bold,Italic" TextColor="{Binding IoTStatusColor}" HorizontalTextAlignment="Center" />
             </StackLayout>
             <ContentView HeightRequest=".5" BackgroundColor="#A9A9A9" />
-            <StackLayout BackgroundColor="White" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Padding="10,10,10,10">
+            <StackLayout BackgroundColor="White" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10,10,10,10">
                 <views:SVGImage Grid.Column="0" Margin="0,0,10,0" Source="resource://AZIoTClient.Resources.Images.hand-phone.svg" WidthRequest="25" HeightRequest="25" Color="#A9A9A9" />
-                <Label Text="Send data to your IoT Hub" FontSize="20" FontAttributes="Bold,Italic" TextColor="{StaticResource NavigationPrimary}" HorizontalTextAlignment="Center" />
+                <Label Text="Send data to Azure IoT Central" FontSize="20" FontAttributes="Bold,Italic" TextColor="{StaticResource NavigationPrimary}" HorizontalTextAlignment="Center" />
             </StackLayout>
             <ScrollView>
                 <StackLayout Spacing="0">

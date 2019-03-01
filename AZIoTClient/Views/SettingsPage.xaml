@@ -3,7 +3,7 @@
     <ContentPage.Content>
         <StackLayout Spacing="0">
             <ContentView BackgroundColor="{StaticResource NavigationPrimary}" Padding="0,20,0,20">
-                <Label Text="Azure IoT Hub Configuration" HorizontalTextAlignment="Center" TextColor="White" FontAttributes="Bold" />
+                <Label Text="Azure IoT Central Configuration" HorizontalTextAlignment="Center" TextColor="White" FontAttributes="Bold" />
             </ContentView>
             <Label Margin="20" FontSize="12" Text="Note: If you are using IoT Central, use the 'dps-keygen' npm package to generate your connection string."/>
             <TableView Intent="Settings" HasUnevenRows="true" HeightRequest="200">

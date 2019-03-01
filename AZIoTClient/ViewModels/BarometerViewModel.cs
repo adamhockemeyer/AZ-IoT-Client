@@ -49,7 +49,7 @@ namespace AZIoTClient.ViewModels
 
         void Barometer_ReadingChanged(object sender, BarometerChangedEventArgs e)
         {
-            Pressure = e.Reading.Pressure;
+            Pressure = e.Reading.PressureInHectopascals;     
 
             if(IsSendingToIoTHub)
             {

@@ -10,6 +10,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <StackLayout Grid.Column="0" HorizontalOptions="CenterAndExpand">
                     <Label Text="{Binding Latitude}" HorizontalTextAlignment="Center" TextColor="{StaticResource NavigationPrimary}" FontAttributes="Italic" />
@@ -23,6 +24,10 @@
                  <StackLayout Grid.Row="1" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand">
                     <Label Text="{Binding Altitude}" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" TextColor="{StaticResource NavigationPrimary}" FontAttributes="Italic"/>
                     <Label Text="Altitude" FontSize="12" HorizontalTextAlignment="Center"/>
+                </StackLayout>
+                <StackLayout Grid.Row="2" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand">
+                    <Label Text="{Binding Address}" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" TextColor="{StaticResource NavigationPrimary}" FontAttributes="Italic"/>
+                    <Label Text="Address" FontSize="12" HorizontalTextAlignment="Center"/>
                 </StackLayout>
             </Grid>
             <TableView Intent="Settings">

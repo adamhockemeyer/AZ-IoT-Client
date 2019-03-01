@@ -29,16 +29,29 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="This app helps you quickly test out your Azure IoT hub by sending sensor data directly to your account." />
+                                <Span Text="This app helps you quickly test out your Azure IoT Central/Hub by sending sensor data directly to your account." />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Label>
+                <Label VerticalOptions="EndAndExpand" HorizontalTextAlignment="Center">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="This is an open source project." />
+                                <Span Text="This is an open source project:" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="https://github.com/adamhockemeyer/AZ-IoT-Client" FontSize="10" TextColor="Blue" TextDecorations="Underline">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenWebCommand}" CommandParameter="https://github.com/adamhockemeyer/AZ-IoT-Client" />
+                                    </Span.GestureRecognizers>
+                                </Span>
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
